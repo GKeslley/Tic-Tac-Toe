@@ -1,1 +1,5 @@
-
+@import "./css/global.css";
+@import "./css/utilidades.css";
+@import "./css/bottons.css";
+@import "./css/playWin.css";
+@import "./css/decoration.css";
