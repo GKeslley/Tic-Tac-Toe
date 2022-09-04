@@ -1,0 +1,15 @@
+.decoration {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.decoration div span:first-child {
+  color: #2cc1bf;
+  font-size: 1.2rem;
+}
+
+.decoration div span:last-child {
+  color: #e9ab32;
+  font-size: 1.2rem;
+}
