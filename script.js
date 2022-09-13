@@ -6,6 +6,8 @@ buttons.forEach((button, index) => {
   });
 });
 
+let filtro;
+
 function checkMark(index, { target }) {
   target.innerText = "x";
   target.value = index;
@@ -24,6 +26,8 @@ function checkMark(index, { target }) {
     const filterDisabled = buttonsDisabled.filter((filter) => {
       return filter;
     });
+
+    filtro = filterDisabled;
 
     const indexItem = Math.floor(
       Math.random() * (filterDisabled.length - 1) + 1
@@ -47,4 +51,26 @@ function checkMark(index, { target }) {
   }
 
   pcPlay();
+  verifyPlay();
+}
+
+function verifyPlay() {
+  const result = [
+    ["0", "1", "2"],
+    ["3", "4", "5"],
+    ["6", "7", "8"],
+    ["0", "3", "6"],
+    ["1", "4", "7"],
+    ["2", "5", "8"],
+    ["0", "4", "8"],
+    ["2", "4", "6"],
+  ];
+
+  const checkForWin = (currentPlayer) => {
+    return result.some((combination) => {
+      return combination.every((index) => {
+        return buttons[index].classList.contains(currentPlayer);
+      });
+    });
+  };
 }
