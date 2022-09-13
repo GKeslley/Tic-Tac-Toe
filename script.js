@@ -73,4 +73,7 @@ function verifyPlay() {
       });
     });
   };
+
+  const xWin = checkForWin("x");
+  const oWin = checkForWin("O");
 }
