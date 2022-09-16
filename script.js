@@ -74,6 +74,46 @@ function verifyPlay() {
     });
   };
 
+  function desabiliteAll(elements) {
+    elements.forEach((item) => (item.disabled = true));
+  }
+
   const xWin = checkForWin("x");
   const oWin = checkForWin("O");
+
+  if (xWin) {
+    desabiliteAll(buttons);
+    const jogador = "X";
+    const situation = "YOU WIN!";
+    const color = "#2cc1bf";
+    playerWin(jogador, situation, color);
+  } else if (oWin) {
+    desabiliteAll(buttons);
+    const jogador = "CPU";
+    const situation = "YOU LOSE!";
+    const color = "#e9ab32";
+    playerWin(jogador, situation, color);
+  } else if (filtro < 1 && !xWin && !oWin) {
+    desabiliteAll(buttons);
+    const jogador = "NOBODY";
+    const situation = "TIE!";
+    playerWin(jogador, situation);
+  }
+}
+
+function playerWin(jogador, situation, color) {
+  const content = document.querySelector(".playWin");
+  const player = document.querySelector("[data-player]");
+  const buttonNextRound = document.querySelector("[data-next]");
+  const contentWinOrLose = document.querySelector(".playWin-content span");
+
+  content.classList.add("ativo");
+  player.style.color = color;
+  player.innerText = jogador;
+  contentWinOrLose.innerText = situation;
+
+  buttonNextRound.addEventListener("click", () => {
+    content.classList.remove("ativo");
+    location.reload();
+  });
 }
